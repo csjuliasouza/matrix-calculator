@@ -16,7 +16,7 @@ The entries of matrix A rows are now multiplied with entries of matching index f
 ## Updates
 **2/06:** Allow user to repeat operations without returning to the command menu.
 
-**2/15:** Add conjugate transpose.
+**2/15:** Add `conjugate_transpose`.
 
 ## Operations
 - Addition & subtraction (completed)
