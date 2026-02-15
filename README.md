@@ -15,13 +15,14 @@ The entries of matrix A rows are now multiplied with entries of matching index f
 
 ## Updates
 **2/06:** Allow user to repeat operations without returning to the command menu.
+**2/15:** Add conjugate transpose.
 
 ## Operations
 - Addition & subtraction (completed)
 - Matrix multiplication (completed, revised 2/12)
+- Element-wise multiplication (incomplete)
 - Transpose (completed, revised 2/07)
-- Inverse (incomplete)
-- Conjugate transpose (incomplete)
+- Conjugate transpose (complete)
 - Unitary/not unitary (incomplete)
 
 ## Dependencies
