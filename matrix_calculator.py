@@ -113,7 +113,7 @@ class Matrix:
     def transpose(self):
         """Create a matrix transpose of dimensions n x m. Number of rows and columns are switched.
         For each entry in the original matrix, switch the values in the index tuple. (index[1], index[0])
-        Place the entry in the empty matrix (using change_entry) until all values are filled.
+        Place the entries in the matrix transpose until all values are filled.
         """
         transpose = self.create_empty(self.n, self.m)
         for index, entry in np.ndenumerate(self.matrix):
@@ -124,7 +124,18 @@ class Matrix:
         pass
 
     def conjugate_transpose(self):
-        pass
+        """Perform a conjugate transpose, producing a new matrix of dimensions n x m. Number of rows and columns are switched.
+        Find the conjugate transpose for complex numbers in the original matrix.
+        Switch the values in the index tuple (index[1], index[0]) to find the position of the new_entry.
+        Place the entry in the matrix (conjugate) transpose until all values are filled.
+        """
+        conjugate_transpose = self.create_empty(self.n, self.m)
+        for index, entry in np.ndenumerate(self.matrix):
+            new_entry = entry.conjugate()
+            conjugate_transpose.matrix[index[1], index[0]] += new_entry
+        return conjugate_transpose
+
+
 
 def main():
     
@@ -135,6 +146,7 @@ def main():
         'Subtract',
         'Multiply',
         'Transpose',
+        'Conjugate Transpose',
         'X to quit', sep='\n')
 
         response = input('\nEnter a command.\n').lower()
@@ -205,12 +217,31 @@ def main():
                     dims_list = list(map(int, dims_str.split()))
                     rows, cols = dims_list[0], dims_list[1]
 
-                    print(f'Enter the {cols} entries for each row of the matrix to transpose (separated by space): ')
+                    print(f'Enter the {cols} entries for each row of the matrix (separated by space): ')
                     data_a = [list(map(int, input().split())) for _ in range(rows)]
                     matrix_a = Matrix(rows, cols, data_a)
                     print('\nResult of transpose:\n', matrix_a.transpose())
 
                     repeat = input('\nDo another transpose? (y/n)\n').lower()
+                    match repeat:
+                        case 'n':
+                             print('\nReturning to menu.')
+                        case repeat if repeat != 'y':
+                            print('\nInvalid input. Terminating operation.')
+                            break
+
+            case 'conjugate transpose':
+                while repeat != 'n':
+                    dims_str = input('\nEnter number of rows and columns separated by a space: ')
+                    dims_list = list(map(int, dims_str.split()))
+                    rows, cols = dims_list[0], dims_list[1]
+
+                    print(f'Enter the {cols} entries for each row of the matrix (separated by space): ')
+                    data_a = [list(map(complex, input().split())) for _ in range(rows)]
+                    matrix_a = Matrix(rows, cols, data_a)
+                    print('\nResult of conjugate transpose:\n', matrix_a.conjugate_transpose())
+
+                    repeat = input('\nDo another conjugate transpose? (y/n)\n').lower()
                     match repeat:
                         case 'n':
                              print('\nReturning to menu.')
