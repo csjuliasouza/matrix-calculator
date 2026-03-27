@@ -1,5 +1,5 @@
 # Python Matrix Calculator
-A matrix calculator to practice implementing matrix operations.
+A matrix calculator to practice my understanding of matrix operations.
 This calculator performs basic operations (addition, subtraction, multiplication), although there are plans for additional functionalities.
 The calculator assumes user input is correct; validation of user input is to be added.
 
